@@ -116,3 +116,22 @@ def getClassname(classNum):
         return '통과 영역 없음'
     elif classNum == 42:
         return '3.5톤 이상의 차량 통행 금지 종료'
+
+while True:
+    # 이미지 읽어들이기
+    suc, original = cap.read()
+
+    # 이미지 처리
+    img = np.asarray(original)
+    img = cv2.resize(img, (32, 32))
+    img = preprocessing(img)
+    cv2.imshow('완료된 이미지', img)
+    img = img.reshape(1, 32, 32, 1)
+    cv2.putText(original, "클래스 : ", (20, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
+    cv2.putText(original, "확률 : ", (20, 75), font, 0.75, (255, 0, 0), 2, cv2.LINE_AA)
+
+    # 예측 이미지
+    prediction = model.predict(img)
+    classIndex = np.argmax(model.predict(img), axis=-1)
+    value = np.amax(prediction)
+    
