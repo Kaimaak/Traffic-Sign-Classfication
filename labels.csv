@@ -1,44 +1,44 @@
 ClassId,Name
-0,Speed limit (20km/h)
-1,Speed limit (30km/h)
-2,Speed limit (50km/h)
-3,Speed limit (60km/h)
-4,Speed limit (70km/h)
-5,Speed limit (80km/h)
-6,End of speed limit (80km/h)
-7,Speed limit (100km/h)
-8,Speed limit (120km/h)
-9,No passing
-10,No passing for vechiles over 3.5 metric tons
-11,Right-of-way at the next intersection
-12,Priority road
-13,Yield
-14,Stop
-15,No vechiles
-16,Vechiles over 3.5 metric tons prohibited
-17,No entry
-18,General caution
-19,Dangerous curve to the left
-20,Dangerous curve to the right
-21,Double curve
-22,Bumpy road
-23,Slippery road
-24,Road narrows on the right
-25,Road work
-26,Traffic signals
-27,Pedestrians
-28,Children crossing
-29,Bicycles crossing
-30,Beware of ice/snow
-31,Wild animals crossing
-32,End of all speed and passing limits
-33,Turn right ahead
-34,Turn left ahead
-35,Ahead only
-36,Go straight or right
-37,Go straight or left
-38,Keep right
-39,Keep left
+0,속도 제한 (20km/h)
+1,속도 제한 (30km/h)
+2,속도 제한 (50km/h)
+3,속도 제한 (60km/h)
+4,속도 제한 (70km/h)
+5,속도 제한 (80km/h)
+6,제한 속도 종료 (80km/h)
+7,속도 제한 (100km/h)
+8,속도 제한 (120km/h)
+9,추월 금지
+10,3.5톤 이상 차량 통행 금지
+11,다음 교차로에서 선로 진입
+12,우선 순위 도로
+13,양보하시오
+14,멈추시오
+15,차량 금지
+16,3.5톤 이상 차량 금지
+17,진입 금지
+18,주의
+19,왼쪽에 위험한 커브길
+20,오른쪽에 위험한 커브길
+21,이중 커브
+22,비포짐도로
+23,미끄럼 주의
+24,오른쪽 길이 좁아짐
+25,도로 공사중
+26,교통 신호등
+27,보행자
+28,어린이 횡단보도
+29,자전거 횡단보도
+30,얼음/눈 주의
+31,야생동물이 지남
+32,아우토반
+33,앞으로 우회전
+34,앞으로 좌회전
+35,계속 직진
+36,직진하거나 오른쪽으로
+37,직진하거나 왼쪽으로
+38,우측 통행
+39,좌측 통행
 40,Roundabout mandatory
 41,End of no passing
 42,End of no passing by vechiles over 3.5 metric tons
