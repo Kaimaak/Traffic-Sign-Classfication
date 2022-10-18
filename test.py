@@ -134,4 +134,11 @@ while True:
     prediction = model.predict(img)
     classIndex = np.argmax(model.predict(img), axis=-1)
     value = np.amax(prediction)
-    
+    if value > threshold:
+        cv2.putText(original, str(classIndex), str(getClassname(classIndex)), (120, 35), font, 0.75, (0,0,255), 2, cv2.LINE_AA)
+        cv2.putText(original, str(round(value*100, 2))+"%", (180, 75), font, 0.75, (255,0,0), 2, cv2.LINE_AA)
+    cv2.imshow('결과', original)
+
+    # q 키를 누른다면 종료
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
