@@ -93,7 +93,7 @@ def getClassname(classNum):
     elif classNum == 30:
         return '얼음/눈 주의'
     elif classNum == 31:
-        return '야생동물이 지남'
+        return '야생동물이 지끝'
     elif classNum == 32:
         return '아우토반'
     elif classNum == 33:
@@ -113,7 +113,7 @@ def getClassname(classNum):
     elif classNum == 40:
         return '우회 필수'
     elif classNum == 41:
-        return '통과 영역 없음'
+        return '통행 금지 구역 끝'
     elif classNum == 42:
         return '3.5톤 이상의 차량 통행 금지 종료'
 
