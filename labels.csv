@@ -39,6 +39,6 @@ ClassId,Name
 37,직진하거나 왼쪽으로
 38,우측 통행
 39,좌측 통행
-40,Roundabout mandatory
-41,End of no passing
-42,End of no passing by vechiles over 3.5 metric tons
+40,우회 필수
+41,통행 금지 구역 끝
+42,3.5톤 이상의 차량 통행 금지 종료
