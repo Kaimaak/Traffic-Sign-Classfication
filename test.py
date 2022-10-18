@@ -73,13 +73,13 @@ def getClassname(classNum):
     elif classNum == 20:
         return '오른쪽에 위험한 커브길'
     elif classNum == 21:
-        return '이중 곡선'
+        return '이중 커장'
     elif classNum == 22:
-        return '울퉁불퉁한 도로'
+        return '비포장도로'
     elif classNum == 23:
         return '미끄럼 주의'
     elif classNum == 24:
-        return '오른쪽 길이 좁아'
+        return '오른쪽 길이 좁아남'
     elif classNum == 25:
         return '도로 공사중'
     elif classNum == 26:
@@ -93,7 +93,7 @@ def getClassname(classNum):
     elif classNum == 30:
         return '얼음/눈 주의'
     elif classNum == 31:
-        return '야생동물이 건너는 도로'
+        return '야생동물이 지남'
     elif classNum == 32:
         return '아우토반'
     elif classNum == 33:
