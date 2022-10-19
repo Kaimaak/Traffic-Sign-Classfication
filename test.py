@@ -144,4 +144,3 @@ while True:
     # q 키를 누른다면 종료
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-#
