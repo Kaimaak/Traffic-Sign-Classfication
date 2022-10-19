@@ -14,7 +14,7 @@ cap.set(3, width)
 cap.set(4, height)
 cap.set(10, brightness)
 
-model = load_model('model.h5')
+model = load_model('my_model.h5')
 
 def gray(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -30,92 +30,92 @@ def preprocessing(img):
     return img
 
 def getClassname(classNum):
-    if classNum == 0:
-        return '20 km/h 제한'
+    if   classNum == 0:
+        return 'speed limit 20 km/h'
     elif classNum == 1:
-        return '30 km/h 제한'
+        return 'Speed Limit 30 km/h'
     elif classNum == 2:
-        return '50 km/h 제한'
+        return 'Speed Limit 50 km/h'
     elif classNum == 3:
-        return '60 km/h 제한'
+        return 'Speed Limit 60 km/h'
     elif classNum == 4:
-        return '70 km/h 제한'
+        return 'Speed Limit 70 km/h'
     elif classNum == 5:
-        return '80 km/h 제한'
+        return 'Speed Limit 80 km/h'
     elif classNum == 6:
-        return '제한 속도 80 km/h 종료'
+        return 'End of Speed Limit 80 km/h'
     elif classNum == 7:
-        return '100 km/h 제한'
+        return 'Speed Limit 100 km/h'
     elif classNum == 8:
-        return '120 km/h 제한'
+        return 'Speed Limit 120 km/h'
     elif classNum == 9:
-        return '추월 금지'
+        return 'No passing'
     elif classNum == 10:
-        return '3.5톤 이상 차량 통행 금지'
+        return 'No passing for vechiles over 3.5 metric tons'
     elif classNum == 11:
-        return '다음 교차로에서 선로 진입'
+        return 'Right-of-way at the next intersection'
     elif classNum == 12:
-        return '우선 순위 도로'
+        return 'Priority road'
     elif classNum == 13:
-        return '양보하시오'
+        return 'Yield'
     elif classNum == 14:
-        return '멈추시오'
+        return 'Stop'
     elif classNum == 15:
-        return '차량 금지'
+        return 'No vechiles'
     elif classNum == 16:
-        return '3.5톤 이상 차량 금지'
+        return 'Vechiles over 3.5 metric tons prohibited'
     elif classNum == 17:
-        return '들어오지 마시오'
+        return 'No entry'
     elif classNum == 18:
-        return '주의'
+        return 'General caution'
     elif classNum == 19:
-        return '왼쪽에 위험한 커브길'
+        return 'Dangerous curve to the left'
     elif classNum == 20:
-        return '오른쪽에 위험한 커브길'
+        return 'Dangerous curve to the right'
     elif classNum == 21:
-        return '이중 커장'
+        return 'Double curve'
     elif classNum == 22:
-        return '비포장도로'
+        return 'Bumpy road'
     elif classNum == 23:
-        return '미끄럼 주의'
+        return 'Slippery road'
     elif classNum == 24:
-        return '오른쪽 길이 좁아남'
+        return 'Road narrows on the right'
     elif classNum == 25:
-        return '도로 공사중'
+        return 'Road work'
     elif classNum == 26:
-        return '교통 신호등'
+        return 'Traffic signals'
     elif classNum == 27:
-        return '보행자'
+        return 'Pedestrians'
     elif classNum == 28:
-        return '어린이 횡단보도'
+        return 'Children crossing'
     elif classNum == 29:
-        return '자전거 횡단보도'
+        return 'Bicycles crossing'
     elif classNum == 30:
-        return '얼음/눈 주의'
+        return 'Beware of ice/snow'
     elif classNum == 31:
-        return '야생동물이 지끝'
+        return 'Wild animals crossing'
     elif classNum == 32:
-        return '아우토반'
+        return 'End of all speed and passing limits'
     elif classNum == 33:
-        return '앞으로 우회전'
+        return 'Turn right ahead'
     elif classNum == 34:
-        return '앞으로 좌회전'
+        return 'Turn left ahead'
     elif classNum == 35:
-        return '계속 직진'
+        return 'Ahead only'
     elif classNum == 36:
-        return '직진하거나 오른쪽으로'
+        return 'Go straight or right'
     elif classNum == 37:
-        return '직진하거나 왼쪽으로'
+        return 'Go straight or left'
     elif classNum == 38:
-        return '우측 통행'
+        return 'Keep right'
     elif classNum == 39:
-        return '좌측 통행'
+        return 'Keep left'
     elif classNum == 40:
-        return '우회 필수'
+        return 'Roundabout mandatory'
     elif classNum == 41:
-        return '통행 금지 구역 끝'
+        return 'End of no passing'
     elif classNum == 42:
-        return '3.5톤 이상의 차량 통행 금지 종료'
+        return 'End of no passing by vechiles over 3.5 metric tons'
 
 while True:
     # 이미지 읽어들이기
@@ -135,10 +135,13 @@ while True:
     classIndex = np.argmax(model.predict(img), axis=-1)
     value = np.amax(prediction)
     if value > threshold:
-        cv2.putText(original, str(classIndex), str(getClassname(classIndex)), (120, 35), font, 0.75, (0,0,255), 2, cv2.LINE_AA)
-        cv2.putText(original, str(round(value*100, 2))+"%", (180, 75), font, 0.75, (255,0,0), 2, cv2.LINE_AA)
-    cv2.imshow('결과', original)
+        cv2.putText(original, str(classIndex) + " " + str(getClassname(classIndex)), (120, 35), font, 0.75,
+                    (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.putText(original, str(round(value * 100, 2)) + "%", (180, 75), font, 0.75, (255, 0, 0), 2,
+                    cv2.LINE_AA)
+    cv2.imshow("Result", original)
 
     # q 키를 누른다면 종료
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+#
