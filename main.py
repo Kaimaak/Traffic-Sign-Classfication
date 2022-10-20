@@ -15,14 +15,14 @@ from keras.optimizers import Adam
 from keras.utils.np_utils import to_categorical
 
 # 파라미터
-path = "Datasets"
-label = 'labels.csv'
-batch_size = 50
-per_epoch = 100
-epoch = 20
-imageDim = (32, 32, 3)
-ratio = 0.2
-val_ratio = 0.2
+path = "Datasets" # 데이터셋 경로
+label = 'labels.csv' # 데이터 정보
+batch_size = 50 # 필터 사이즈
+per_epoch = 100 # 초당 학습 횟수
+epoch = 20 # 최종 학습 횟수
+imageDim = (32, 32, 3) # 이미지 차원
+ratio = 0.2 # 비율
+val_ratio = 0.2 # 검증 비율
 
 # 이미지 임포트
 cnt = 0
@@ -32,6 +32,7 @@ mylist = os.listdir(path)
 numOfClass = len(mylist)
 print("total classes :", len(mylist))
 
+# 클래스 갯수 검사
 for i in range(0, len(mylist)):
     myPick = os.listdir(path+"/"+str(cnt))
     for j in myPick:
@@ -42,6 +43,7 @@ for i in range(0, len(mylist)):
     cnt += 1
 print(" ")
 
+# 넘파이 배열로 변경
 imgS = np.array(imgS)
 classNum = np.array(classNum)
 
@@ -87,6 +89,7 @@ plt.xlabel("Class number")
 plt.ylabel("Number of images")
 plt.show()
 
+# 이미지 전처리
 def grayscale(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     return img
@@ -107,7 +110,7 @@ x_val = np.array(list(map(preprocessing, x_val)))
 x_test = np.array(list(map(preprocessing, x_test)))
 cv2.imshow("GrayScale Images", x_train[random.randint(0, len(x_train) - 1)])
 
-# 1차원 추가하여 쉐이프 변화 시키기
+# 1차원 추가하여 모양 변화 시키기
 x_train = x_train.reshape(x_train.shape[0], x_train.shape[1], x_train.shape[2], 1)
 x_val = x_val.reshape(x_val.shape[0], x_val.shape[1], x_val.shape[2], 1)
 x_test = x_test.reshape(x_test.shape[0], x_test.shape[1], x_test.shape[2], 1)
@@ -137,7 +140,7 @@ y_val = to_categorical(y_val, numOfClass)
 y_test = to_categorical(y_test, numOfClass)
 
 
-# 커스텀 CNN 모델 생성
+# CNN 모델 생성
 def myModel():
     no_Of_Fileters = 60
     size_of_Filter = (5, 5)
@@ -146,6 +149,7 @@ def myModel():
     size_of_pool = (2, 2)
     no_Of_Nodes = 500
 
+    # 활성화 함수로 ReLU 사용
     model = Sequential()
     model.add((Conv2D(no_Of_Fileters, size_of_Filter, input_shape=(imageDim[0], imageDim[1], 1),
                       activation='relu')))
@@ -162,7 +166,7 @@ def myModel():
     model.add(Dropout(0.5))
     model.add(Dense(numOfClass, activation='softmax'))
 
-    # CNN model 컴파일
+    # CNN 모델 컴파일
     model.compile(Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
@@ -174,7 +178,7 @@ history = model.fit_generator(dataGen.flow(x_train, y_train, batch_size=batch_si
                               steps_per_epoch=per_epoch, epochs=epoch, validation_data=(x_val, y_val),
                               shuffle=1)
 
-# History
+# 시각화
 plt.figure(1)
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
