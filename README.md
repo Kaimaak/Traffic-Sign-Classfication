@@ -6,3 +6,4 @@
 - 판다스
 - 넘파이
 - OpenCV-Python
+- matplotlib
