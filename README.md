@@ -7,3 +7,4 @@
 - 넘파이
 - OpenCV-Python
 - matplotlib
+- sklearn
